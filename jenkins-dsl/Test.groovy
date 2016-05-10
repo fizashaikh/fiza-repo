@@ -1,4 +1,13 @@
 freeStyleJob('Test_Job') {   
+    scm {
+        git {
+            remote {
+                url('https://github.com/fizashaikh/fiza-repo.git')
+                credentials('git-user')
+            }
+            branch('develop')
+        }
+    }
     steps{
         shell('''echo "Hello world !"
         ''')
