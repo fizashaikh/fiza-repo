@@ -13,7 +13,7 @@ freeStyleJob('Test_Job') {
             notifyUnstable()
             notifyBackToNormal()
             notifyRepeatedFailure()
-            commitInfoChoice('AUTHORS_AND_TITLES')
+            showCommitList()
         }
     }
 }
