@@ -3,6 +3,10 @@ freeStyleJob('Downstream_Job') {
         shell('''echo "Hello world !"
         ''')
     }
+    configure { project ->
+		def slackXmlNode = project / 'publishers' / 'jenkins.plugins.slack.SlackNotifier'
+                slackXmlNode.appendNode('notifyBuildStart', 'true')
+    }
 }
 
 freeStyleJob('Test_Job') {   
