@@ -54,7 +54,7 @@ freeStyleJob('Test_Area/Test_Job') {
             }
 }
 
-buildPipelineView('My Test View') {
+buildPipelineView('Test_Area/My Test View') {
     filterBuildQueue()
     filterExecutors()
     title('My Pipeline')
