@@ -1,6 +1,6 @@
 freeStyleJob('Downstream_Job') {   
     steps{
-        shell('''echo "Hello world !"
+        shell('''echo "Hello world Again!"
         ''')
     }
     configure { project ->
