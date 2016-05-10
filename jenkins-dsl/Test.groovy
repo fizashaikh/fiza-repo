@@ -1,18 +1,14 @@
-folder('Test Area') {
+folder('Test_Area') {
     description('Playground')
 }
-freeStyleJob('Downstream_Job') {   
+freeStyleJob('Test_Area/Downstream_Job') {   
     steps{
         shell('''echo "Hello world Again!"
         ''')
     }
-    configure { project ->
-		def slackXmlNode = project / 'publishers' / 'jenkins.plugins.slack.SlackNotifier'
-                slackXmlNode.appendNode('notifyBuildStart', 'true')
-    }
 }
 
-freeStyleJob('Test_Job') {   
+freeStyleJob('Test_Area/Test_Job') {   
     scm {
         git {
             remote {
@@ -21,9 +17,6 @@ freeStyleJob('Test_Job') {
             }
             branch('develop')
         }
-    }
-    triggers {
-        scm('* * * * *')
     }
     steps{
         shell('''echo "Hello world !"
@@ -55,7 +48,7 @@ buildPipelineView('My Test View') {
     filterExecutors()
     title('My Pipeline')
     displayedBuilds(5)
-    selectedJob('Test_Job')
+    selectedJob('Test_Area/Test_Job')
     alwaysAllowManualTrigger()
     showPipelineParameters()
     refreshFrequency(60)
