@@ -8,6 +8,9 @@ freeStyleJob('Test_Job') {
             branch('develop')
         }
     }
+    triggers {
+        scm('* * * * *')
+    }
     steps{
         shell('''echo "Hello world !"
         ''')
