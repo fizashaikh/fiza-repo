@@ -1,3 +1,10 @@
+freeStyleJob('Downstream_Job') {   
+    steps{
+        shell('''echo "Hello world !"
+        ''')
+    }
+}
+
 freeStyleJob('Test_Job') {   
     scm {
         git {
@@ -15,9 +22,16 @@ freeStyleJob('Test_Job') {
         shell('''echo "Hello world !"
         ''')
     }
+    publishers {
+        downstreamParameterized {
+            trigger('Downstream_Job') {
+                condition('SUCCESS')
+                triggerWithNoParameters()
+            }
+        }
+    }
     configure { project ->
 		def slackXmlNode = project / 'publishers' / 'jenkins.plugins.slack.SlackNotifier'
-		slackXmlNode.appendNode('notifyBuildStart', 'true')
                 slackXmlNode.appendNode('notifyAborted', 'true')
                 slackXmlNode.appendNode('notifyNotBuilt', 'true')
                 slackXmlNode.appendNode('notifyUnstable', 'true')
