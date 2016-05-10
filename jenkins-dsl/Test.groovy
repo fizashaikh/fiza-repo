@@ -6,6 +6,17 @@ freeStyleJob('Test_Area/Downstream_Job') {
         shell('''echo "Hello world Again!"
         ''')
     }
+    configure { project ->
+		def slackXmlNode = project / 'publishers' / 'jenkins.plugins.slack.SlackNotifier'
+                slackXmlNode.appendNode('notifySuccess', 'true')
+                slackXmlNode.appendNode('notifyAborted', 'true')
+                slackXmlNode.appendNode('notifyNotBuilt', 'true')
+                slackXmlNode.appendNode('notifyUnstable', 'true')
+                slackXmlNode.appendNode('notifyFailure', 'true')
+                slackXmlNode.appendNode('notifyBackToNormal', 'true')
+                slackXmlNode.appendNode('notifyRepeatedFailure', 'true')
+                slackXmlNode.appendNode('commitInfoChoice', 'AUTHORS_AND_TITLES')
+            }
 }
 
 freeStyleJob('Test_Area/Test_Job') {   
