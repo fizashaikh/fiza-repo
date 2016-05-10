@@ -36,6 +36,7 @@ freeStyleJob('Test_Job') {
     }
     configure { project ->
 		def slackXmlNode = project / 'publishers' / 'jenkins.plugins.slack.SlackNotifier'
+                slackXmlNode.appendNode('notifySuccess', 'true')
                 slackXmlNode.appendNode('notifyAborted', 'true')
                 slackXmlNode.appendNode('notifyNotBuilt', 'true')
                 slackXmlNode.appendNode('notifyUnstable', 'true')
