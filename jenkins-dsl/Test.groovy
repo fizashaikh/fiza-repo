@@ -1,5 +1,6 @@
 folder('Test_Area') {
     description('Playground')
+    primaryView("Pipeline")
 }
 freeStyleJob('Test_Area/Downstream_Job') {   
     steps{
@@ -54,7 +55,7 @@ freeStyleJob('Test_Area/Test_Job') {
             }
 }
 
-buildPipelineView('Test_Area/My Test View') {
+buildPipelineView('Test_Area/Pipeline') {
     filterBuildQueue()
     filterExecutors()
     title('My Pipeline')
