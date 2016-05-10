@@ -1,3 +1,6 @@
+folder('Test Area') {
+    description('Playground')
+}
 freeStyleJob('Downstream_Job') {   
     steps{
         shell('''echo "Hello world Again!"
