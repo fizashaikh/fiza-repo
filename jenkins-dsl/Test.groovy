@@ -46,3 +46,14 @@ freeStyleJob('Test_Job') {
                 slackXmlNode.appendNode('commitInfoChoice', 'AUTHORS_AND_TITLES')
             }
 }
+
+buildPipelineView('My Test View') {
+    filterBuildQueue()
+    filterExecutors()
+    title('My Pipeline')
+    displayedBuilds(5)
+    selectedJob('Test_Job')
+    alwaysAllowManualTrigger()
+    showPipelineParameters()
+    refreshFrequency(60)
+}
