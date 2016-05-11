@@ -21,10 +21,17 @@ freeStyleJob('Test_Area/Downstream_Job') {
 }
 
 freeStyleJob('Test_Area/Test_Job') {   
-    scm {
+    multiscm {
         git {
             remote {
                 url('https://github.com/fizashaikh/fiza-repo.git')
+                credentials('git-user')
+            }
+            branch('develop')
+        }
+        git {
+            remote {
+                url('https://github.com/fizashaikh/test-repo.git')
                 credentials('git-user')
             }
             branch('develop')
